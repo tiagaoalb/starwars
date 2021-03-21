@@ -1,3 +1,3 @@
-import Planets from './OldPlanets';
+import Planets from './Planets';
 
 export default Planets;
