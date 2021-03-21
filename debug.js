@@ -10,8 +10,8 @@ const pessoas = [
     altura: 168,
   },
   {
-    name: 'João',
-    idade: 38,
+    name: 'Toão',
+    idade: 51,
     altura: 185,
   },
   {
@@ -21,12 +21,8 @@ const pessoas = [
   },
 ];
 
-// nome = i.includes('ap')
-
 const filtrar = (condicoes) => {
-  const len = condicoes.length;
   const arr = [];
-
   condicoes.forEach((cond) => {
     if (cond.tipo === 'texto') {
       arr.push((i) => i.name.includes(`${cond.valor}`));
@@ -38,21 +34,24 @@ const filtrar = (condicoes) => {
       arr.push((i) => i[cond.param] === cond.valor);
     }
   });
-
-  return pessoas.filter(arr[0]).filter(arr[1]);
+  let lista = [...pessoas];
+  while (arr.length > 0) {
+    lista = lista.filter(arr.pop());
+  }
+  return lista;
 };
 
 const cond = [
   {
     tipo: 'texto',
     param: '',
-    valor: 'Ti',
+    valor: 'T',
   },
   {
     tipo: 'numero',
     param: 'idade',
-    condicao: 'maior',
-    valor: 50,
+    condicao: 'menor',
+    valor: 56,
   },
 ];
 
