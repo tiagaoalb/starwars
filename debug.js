@@ -21,6 +21,8 @@ const pessoas = [
   },
 ];
 
+const planets = require('./planets');
+
 const filtrar = (condicoes) => {
   const arr = [];
   condicoes.forEach((cond) => {
@@ -34,7 +36,7 @@ const filtrar = (condicoes) => {
       arr.push((i) => i[cond.param] === cond.valor);
     }
   });
-  let lista = [...pessoas];
+  let lista = [...planets];
   while (arr.length > 0) {
     lista = lista.filter(arr.pop());
   }
@@ -43,17 +45,24 @@ const filtrar = (condicoes) => {
 
 const cond = [
   {
-    tipo: 'texto',
-    param: '',
-    valor: 'T',
-  },
-  {
     tipo: 'numero',
-    param: 'idade',
+    param: 'rotation_period',
     condicao: 'menor',
-    valor: 56,
+    valor: 25,
   },
 ];
+
+// {
+//   tipo: 'texto',
+//   param: '',
+//   valor: 'Tato',
+// },
+// {
+//   tipo: 'numero',
+//   param: 'idade',
+//   condicao: 'menor',
+//   valor: 56,
+// },
 
 const res = filtrar(cond);
 
